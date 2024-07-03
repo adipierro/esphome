@@ -29,7 +29,8 @@ const uint8_t BL0942_INIT[5][6] = {
     // // 0x47FF = Over-current and leakage alarm on, Automatic temperature measurement, Interval 100mS
     // {BL0942_WRITE_COMMAND, BL0942_REG_TPS_CTRL, 0xFF, 0x47, 0x00, 0xFE},
     // // 0x181C = Half cycle, Fast RMS threshold 6172
-    // {BL0942_WRITE_COMMAND, BL0942_REG_I_FAST_RMS_CTRL, 0x1C, 0x18, 0x00, 0x1B}};
+    // {BL0942_WRITE_COMMAND, BL0942_REG_I_FAST_RMS_CTRL, 0x1C, 0x18, 0x00, 0x1B}
+};
 
 void BL0942::loop() {
   DataPacket buffer;
