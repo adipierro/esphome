@@ -13,23 +13,23 @@ static const uint8_t BL0942_PACKET_HEADER = 0x55;
 
 static const uint8_t BL0942_WRITE_COMMAND = 0xA8;
 static const uint8_t BL0942_REG_I_FAST_RMS_CTRL = 0x10;
-static const uint8_t BL0942_REG_MODE = 0x18;
-static const uint8_t BL0942_REG_SOFT_RESET = 0x19;
-static const uint8_t BL0942_REG_USR_WRPROT = 0x1A;
+static const uint8_t BL0942_REG_MODE = 0x19;
+static const uint8_t BL0942_REG_SOFT_RESET = 0x1C;
+static const uint8_t BL0942_REG_USR_WRPROT = 0x1D;
 static const uint8_t BL0942_REG_TPS_CTRL = 0x1B;
 
 // TODO: Confirm insialisation works as intended
 const uint8_t BL0942_INIT[5][6] = {
     // Reset to default
-    {BL0942_WRITE_COMMAND, BL0942_REG_SOFT_RESET, 0x5A, 0x5A, 0x5A, 0x38},
-    // Enable User Operation Write
-    {BL0942_WRITE_COMMAND, BL0942_REG_USR_WRPROT, 0x55, 0x00, 0x00, 0xF0},
-    // 0x0100 = CF_UNABLE energy pulse, AC_FREQ_SEL 50Hz, RMS_UPDATE_SEL 800mS
-    {BL0942_WRITE_COMMAND, BL0942_REG_MODE, 0x00, 0x10, 0x00, 0x37},
-    // 0x47FF = Over-current and leakage alarm on, Automatic temperature measurement, Interval 100mS
-    {BL0942_WRITE_COMMAND, BL0942_REG_TPS_CTRL, 0xFF, 0x47, 0x00, 0xFE},
-    // 0x181C = Half cycle, Fast RMS threshold 6172
-    {BL0942_WRITE_COMMAND, BL0942_REG_I_FAST_RMS_CTRL, 0x1C, 0x18, 0x00, 0x1B}};
+    {BL0942_WRITE_COMMAND, BL0942_REG_SOFT_RESET, 0x5A, 0x5A, 0x5A, 0x2D},
+    // // Enable User Operation Write
+    {BL0942_WRITE_COMMAND, BL0942_REG_USR_WRPROT, 0x55, 0x00, 0x00, 0xE5},
+    // // 0x0100 = CF_UNABLE energy pulse, AC_FREQ_SEL 50Hz, RMS_UPDATE_SEL 800mS
+    // {BL0942_WRITE_COMMAND, BL0942_REG_MODE, 0x00, 0x10, 0x00, 0x37},
+    // // 0x47FF = Over-current and leakage alarm on, Automatic temperature measurement, Interval 100mS
+    // {BL0942_WRITE_COMMAND, BL0942_REG_TPS_CTRL, 0xFF, 0x47, 0x00, 0xFE},
+    // // 0x181C = Half cycle, Fast RMS threshold 6172
+    // {BL0942_WRITE_COMMAND, BL0942_REG_I_FAST_RMS_CTRL, 0x1C, 0x18, 0x00, 0x1B}};
 
 void BL0942::loop() {
   DataPacket buffer;
